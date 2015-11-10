@@ -1,0 +1,105 @@
+﻿@model CS.Common.Models.ViewModels.ChallengeViewModel
+
+<div class="jumbotron">
+    <div class="panel panel-danger">
+        <div class="panel-heading text-center">
+            <strong class="panel-title">@Model.Name</strong>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <span class="label label-primary">Start Date | @Model.StartDate</span>
+                </div>
+            </div>
+
+            <div class="well well-sm text-center">
+                @Model.Description
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="progress progress-striped active">
+                        <div id="progress" class="progress-bar">
+                        </div>
+                    </div>
+
+                    <div class="well well-sm">
+                        <textarea id="input-box"></textarea>
+                        <button id="validate" class="btn btn-danger btn-lg btn-block">Validate</button>
+                    </div>
+
+                    <div class="alert alert-dismissible alert-success">
+                        <strong id="reward-box"></strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        var button = document.getElementById('validate'),
+            textBox = document.getElementById('input-box'),
+            progress = document.getElementById('progress'),
+            rewardBox = document.getElementById('reward-box');
+
+        button.addEventListener('click', function (ev) {
+            validateAnswer(textBox.value);
+        }, false);
+
+        function validateAnswer(answer) {
+            var MINIMUM_LENGTH = Number("@Model.MinimumWordsRestriction"),
+                regex = /\s{2,}/,
+                percentage = 0;
+
+            if (answer !== '') {
+                answer = answer.trim();
+
+                var words = answer.replace(regex, ' ').split(' '),
+                    wordsCount = words.length;
+
+                percentage = (wordsCount / MINIMUM_LENGTH) * 100;
+
+                if (percentage > 100) {
+                    percentage = 100;
+                }
+
+                progress.style.width = percentage.toFixed(2) + '%';
+                progress.innerText = percentage.toFixed(2) + '%';
+            }
+            else {
+                if (progress.style.width > 0) {
+                    progress.innerText = '';
+                    progress.style.width = percentage.toFixed(2) + '%';
+                }
+            }
+
+            if (wordsCount >= MINIMUM_LENGTH) {
+                completeChallenge(answer);
+            }
+        }
+
+        function completeChallenge(answer) {
+            var currentURL = window.location.href,
+                parts = currentURL.split('/'),
+                id = parts[parts.length - 1],
+                apiURL = 'http://localhost:15476/api/challenges/',
+                redirectURL = 'http://localhost:17233/challenges/completed';
+
+            requestURL = apiURL + id;
+
+            $.ajax({
+                type: "POST",
+                url: requestURL,
+                data: { "": answer },
+            })
+            .done(function () {
+                rewardBox.innerText = "@Model.Reward";
+
+                setTimeout(function () {
+                    window.location.replace(redirectURL);
+                }, 5000);
+            });
+        }
+    </script>
+}

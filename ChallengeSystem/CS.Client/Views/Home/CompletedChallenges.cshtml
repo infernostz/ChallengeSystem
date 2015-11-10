@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CS.Common.Models.ViewModels.CompletedChallengeView>
+
+@if (Model == null || Model.Count() == 0)
+{
+    <div class="jumbotron text-center">
+        <div class="well">
+            <div>No completed challenges.</div>
+        </div>
+    </div>
+}
+else
+{
+    foreach (var challenge in Model)
+    {
+        <div class="jumbotron">
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center">
+                    <strong class="panel-title">@challenge.Name</strong>
+                </div>
+                <div class="panel-body">
+                    <div class="well well-sm text-center">
+                        @challenge.Description
+                    </div>
+
+                    <div class="panel panel-primary">
+
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-md-6 text-right">
+                                    <span class="label label-success">Completed at:</span>
+                                </div>
+                                <div class="col-md-6 text-left">
+                                    <span class="label label-success">@challenge.CompletedAt</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="panel panel-primary text-center">
+                                        <div class="panel-heading">
+                                            Answer
+                                        </div>
+                                        <div class="panel-body">
+                                            @challenge.Answer
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="panel panel-success text-center">
+                                        <div class="panel-heading">
+                                            Reward
+                                        </div>
+                                        <div class="panel-body">
+                                            @challenge.Reward
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

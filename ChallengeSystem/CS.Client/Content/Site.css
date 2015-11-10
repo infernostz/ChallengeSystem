@@ -1,0 +1,29 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#progress {
+    font-weight: bold;
+    color: black;
+}
+
+input[type=text] {
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+    height: 50%;
+    resize: vertical;
+}
+
+#validate {
+    margin: 20px auto 0px;
+}

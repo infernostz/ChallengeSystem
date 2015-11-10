@@ -1,0 +1,16 @@
+﻿@model DateTime?
+
+<div class="jumbotron text-center">
+    <div class="well">
+        <div>
+            There are no available challenges at the moment.
+        </div>
+
+        @if (Model != null)
+        {
+            <div>
+                The next challenge will be available at <strong><span class="label label-warning">@Model</span></strong>.
+            </div>
+        }
+    </div>
+</div>
