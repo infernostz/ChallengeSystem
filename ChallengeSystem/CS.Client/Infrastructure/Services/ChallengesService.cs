@@ -15,7 +15,7 @@
 
     public class ChallengesService : IChallengesService
     {
-        private const string BASE_ADDRESS = "http://localhost:15476/";
+        private const string BASE_ADDRESS = "http://obichamteyanaapi.apphb.com/";
         private HttpClient httpClient;
 
         public ChallengesService()
