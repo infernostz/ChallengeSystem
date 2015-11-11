@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I LOVE YOU, YANA</title>
+    @*<title>I LOVE YOU, YANA</title>*@
+    <title>ОБИЧАМ ТЕ, ЯНА</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -16,12 +17,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <strong class="navbar-text">I LOVE YOU</strong>
+                @*<strong class="navbar-text">I LOVE YOU</strong>*@
+                <strong class="navbar-text">ОБИЧАМ ТЕ</strong>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Challenges", "GetAll", "Home")</li>
-                    <li>@Html.ActionLink("Completed", "GetCompleted", "Home")</li>
+                    @*<li>@Html.ActionLink("Challenges", "GetAll", "Home")</li>
+                    <li>@Html.ActionLink("Completed", "GetCompleted", "Home")</li>*@
+                    <li>@Html.ActionLink("Challenge-и", "GetAll", "Home")</li>
+                    <li>@Html.ActionLink("Ейтея си минала", "GetCompleted", "Home")</li>
                 </ul>
             </div>
         </div>
