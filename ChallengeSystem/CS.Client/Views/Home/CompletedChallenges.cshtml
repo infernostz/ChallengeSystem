@@ -4,7 +4,8 @@
 {
     <div class="jumbotron text-center">
         <div class="well">
-            <div>No completed challenges.</div>
+            @*<div>No completed challenges.</div>*@
+            <div>Яничке, нищо не си complete-нала ве. Айде малко по-сериозно.</div>
         </div>
     </div>
 }
@@ -27,7 +28,8 @@ else
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-md-6 text-right">
-                                    <span class="label label-success">Completed at:</span>
+                                    @*<span class="label label-success">Completed at:</span>*@
+                                    <span class="label label-success">Тъй си го завършила на:</span>
                                 </div>
                                 <div class="col-md-6 text-left">
                                     <span class="label label-success">@challenge.CompletedAt</span>
@@ -38,8 +40,11 @@ else
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="panel panel-primary text-center">
-                                        <div class="panel-heading">
+                                        @*<div class="panel-heading">
                                             Answer
+                                        </div>*@
+                                        <div class="panel-heading">
+                                            Ейтуй ми написа:
                                         </div>
                                         <div class="panel-body">
                                             @challenge.Answer
@@ -48,8 +53,11 @@ else
                                 </div>
                                 <div class="col-md-6">
                                     <div class="panel panel-success text-center">
-                                        <div class="panel-heading">
+                                        @*<div class="panel-heading">
                                             Reward
+                                        </div>*@
+                                        <div class="panel-heading">
+                                            Ай честито:
                                         </div>
                                         <div class="panel-body">
                                             @challenge.Reward

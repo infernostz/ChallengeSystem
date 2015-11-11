@@ -1,26 +1,15 @@
 ﻿@model IEnumerable<CS.Common.Models.ViewModels.ChallengePartialViewModel>
 
-@if (Model == null || Model.Count() == 0)
-{
-    <div class="jumbotron text-center">
-        <h1 class="alert alert-dismissible alert-danger">
-            <strong>No available challenges.</strong>
-        </h1>
-    </div>
-}
-else
-{
-    <div class="jumbotron">
-        @foreach (var challenge in Model)
-        {
-            <div class="panel panel-default text-center">
-                <div class="panel-body">
-                    @challenge.Description
-                    <h1 class="panel-title text-center">
-                        <strong><a class="btn btn-danger btn-lg btn-block" href="challenges/@challenge.Id">@challenge.Name</a></strong>
-                    </h1>
-                </div>
+<div class="jumbotron">
+    @foreach (var challenge in Model)
+    {
+        <div class="panel panel-default text-center">
+            <div class="panel-body">
+                @challenge.Description
+                <h1 class="panel-title text-center">
+                    <strong><a class="btn btn-danger btn-lg btn-block" href="challenges/@challenge.Id">@challenge.Name</a></strong>
+                </h1>
             </div>
-        }
-    </div>
-}
+        </div>
+    }
+</div>
